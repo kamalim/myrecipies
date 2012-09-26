@@ -9,9 +9,9 @@
 
 package "httpd" do
 	action :install
-	not_if "service httpd status"
+	not_if "test -f /etc/init.d/httpd"
  end
 service "httpd" do
  action [:enable, :start]
- not_if "service httpd status"
+ not_if "test -f /etc/init.d/httpd"
 end
